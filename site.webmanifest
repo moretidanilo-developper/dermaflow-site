@@ -1,0 +1,16 @@
+{
+ "name": "Dermaflow Rental",
+ "short_name": "Dermaflow",
+ "lang": "pt-BR",
+ "start_url": "/",
+ "display": "standalone",
+ "background_color": "#FAF5F1",
+ "theme_color": "#4A2A3B",
+ "icons": [
+  {
+   "src": "/assets/img/dermaflow-avatar-app.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}
