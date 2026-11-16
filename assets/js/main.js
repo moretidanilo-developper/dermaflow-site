@@ -19,6 +19,30 @@
     if (new Date() > fim) promo.hidden = true;
   }
 
+  // Carrossel de fotos do topo: setas, pontos, arrastar e troca automática (pausa ao interagir)
+  document.querySelectorAll('.carrossel').forEach(function (c) {
+    var lista = c.querySelector('.slides'), slides = c.querySelectorAll('.slide');
+    var dots = c.querySelectorAll('.dots button'), legenda = c.querySelector('.legenda');
+    var atual = 0, timer = null;
+    var reduz = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function ir(i) { atual = (i + slides.length) % slides.length; lista.scrollTo({ left: atual * lista.clientWidth, behavior: reduz ? 'auto' : 'smooth' }); }
+    function marcar(i) {
+      dots.forEach(function (d, k) { if (k === i) d.setAttribute('aria-current', 'true'); else d.removeAttribute('aria-current'); });
+      if (legenda) legenda.textContent = slides[i].getAttribute('data-legenda');
+    }
+    lista.addEventListener('scroll', function () {
+      var i = Math.round(lista.scrollLeft / lista.clientWidth);
+      atual = i; marcar(i);
+    }, { passive: true });
+    dots.forEach(function (d, k) { d.addEventListener('click', function () { parar(); ir(k); }); });
+    c.querySelector('.ant').addEventListener('click', function () { parar(); ir(atual - 1); });
+    c.querySelector('.prox').addEventListener('click', function () { parar(); ir(atual + 1); });
+    lista.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { parar(); ir(atual + 1); } if (e.key === 'ArrowLeft') { parar(); ir(atual - 1); } });
+    function parar() { if (timer) { clearInterval(timer); timer = null; } }
+    ['pointerdown', 'touchstart', 'focusin'].forEach(function (ev) { c.addEventListener(ev, parar, { passive: true }); });
+    if (!reduz) timer = setInterval(function () { if (!document.hidden) ir(atual + 1); }, 5000);
+  });
+
   // Vídeos: carregam só quando a pessoa clica (site leve)
   document.addEventListener('click', function (e) {
     var play = e.target.closest('.play[data-embed], .play[data-mp4]');

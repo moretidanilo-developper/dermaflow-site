@@ -469,3 +469,19 @@ blockquote { margin: 0; }
 .center { text-align: center; }
 .muted { color: var(--texto-2); }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* ---------- carrossel do topo (página inicial) ---------- */
+.carrossel { position: relative; }
+.carrossel .slides { list-style: none; margin: 0; padding: 0; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; border-radius: 220px 220px var(--raio) var(--raio); aspect-ratio: 4 / 5; background: #000; }
+.carrossel .slides::-webkit-scrollbar { display: none; }
+.carrossel .slide { flex: 0 0 100%; scroll-snap-align: start; }
+.carrossel .slide .foto { width: 100%; height: 100%; border-radius: 0; aspect-ratio: auto; }
+.carrossel .seta { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--ouro); background: rgba(14, 14, 13, .55); color: var(--ouro-claro); font: 400 28px/1 var(--serif); cursor: pointer; display: grid; place-items: center; padding: 0 0 4px; backdrop-filter: blur(4px); transition: background .25s, color .25s; }
+.carrossel .seta:hover { background: var(--ouro); color: var(--onix); }
+.carrossel .ant { left: 12px; } .carrossel .prox { right: 12px; }
+.carrossel .foot { align-items: center; }
+.carrossel .legenda { color: var(--texto-2); }
+.carrossel .dots { display: flex; gap: 8px; }
+.carrossel .dots button { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--ouro); background: transparent; padding: 0; cursor: pointer; transition: background .25s, width .25s; }
+.carrossel .dots button[aria-current="true"] { background: var(--ouro); width: 24px; border-radius: 5px; }
+@media (prefers-reduced-motion: reduce) { .carrossel .slides { scroll-behavior: auto; } }
