@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow"><title>Dermaflow · versão celular</title>
+<style>
+:root{color-scheme:dark}
+body{margin:0;min-height:100vh;background:radial-gradient(60% 60% at 50% 0%,#2A2925,#0E0E0D 70%);font-family:system-ui,-apple-system,Segoe UI,sans-serif;color:#E6DCCB;display:flex;flex-direction:column;align-items:center;gap:18px;padding:28px 16px;box-sizing:border-box}
+h1{font-weight:500;font-size:1rem;letter-spacing:.18em;text-transform:uppercase;color:#C4A46A;margin:0}
+.bar{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.bar button,.bar a{background:transparent;border:1px solid rgba(196,164,106,.5);color:#E0C890;border-radius:999px;padding:7px 14px;font:600 .8rem system-ui;cursor:pointer;text-decoration:none}
+.bar button[aria-pressed=true]{background:#C4A46A;color:#0E0E0D}
+.phone{position:relative;width:390px;height:844px;border-radius:54px;padding:14px;background:#050505;box-shadow:0 0 0 2px #3a3833,0 30px 80px -20px rgba(0,0,0,.8),inset 0 0 0 2px #1a1917}
+.phone:before{content:"";position:absolute;top:24px;left:50%;transform:translateX(-50%);width:120px;height:32px;border-radius:20px;background:#000;z-index:2}
+iframe{width:100%;height:100%;border:0;border-radius:40px;background:#0E0E0D}
+.wrap{transform-origin:top center}
+p{margin:0;font-size:.8rem;color:#A6A196}
+</style></head><body>
+<h1>Dermaflow Rental · celular</h1>
+<div class="bar" id="bar"></div>
+<div class="wrap" id="wrap"><div class="phone"><iframe id="f" src="./" title="Site Dermaflow em tela de celular"></iframe></div></div>
+<p>Simulação de iPhone (390 × 844). No celular de verdade, abra o link normal do site.</p>
+<script>
+const pags=[["Início","./"],["Q-Clean","equipamentos/q-clean/"],["Trinity GO","equipamentos/trinity-go/"],["Clientes","clientes/"],["Sobre","sobre/"],["Contato","contato/"]];
+const bar=document.getElementById('bar'),f=document.getElementById('f');
+pags.forEach(([n,u],i)=>{const b=document.createElement('button');b.textContent=n;b.setAttribute('aria-pressed',i==0);b.onclick=()=>{f.src=u;bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b))};bar.appendChild(b)});
+const a=document.createElement('a');a.href='./';a.textContent='Ver versão desktop ↗';a.target='_blank';bar.appendChild(a);
+function fit(){const h=innerHeight-170,s=Math.min(1,h/872,(innerWidth-32)/390);const w=document.getElementById('wrap');w.style.transform=`scale(${s})`;w.style.height=(872*s)+'px'}
+addEventListener('resize',fit);fit();
+</script></body></html>
