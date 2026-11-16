@@ -4,8 +4,8 @@
  "lang": "pt-BR",
  "start_url": "/",
  "display": "standalone",
- "background_color": "#FAF5F1",
- "theme_color": "#4A2A3B",
+ "background_color": "#0E0E0D",
+ "theme_color": "#0E0E0D",
  "icons": [
   {
    "src": "/assets/img/dermaflow-avatar-app.png",
